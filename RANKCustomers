@@ -1,0 +1,19 @@
+/*Top 10 customers: name, location, total rentals, total money spent, ranked by money spent*/  
+
+SELECT DISTINCT rank() OVER (ORDER by SUM(p.amount) DESC) as rank,
+	cu.customer_id,
+	cu.first_name||' '||cu.last_name as customer_name,
+	c.country,
+	COUNT(r.rental_id) as total_rentals,
+	SUM(p.amount) as money_spent
+FROM customer cu
+	JOIN address a ON cu.address_id=a.address_id
+	JOIN city ON a.city_id=city.city_id
+	JOIN country c ON city.country_id=c.country_id
+	LEFT JOIN rental r ON cu.customer_id=r.customer_id
+	JOIN payment p ON r.rental_id=p.rental_id
+GROUP by cu.customer_id,
+                   customer_name,
+                   c.country
+ORDER by rank 
+LIMIT 10;
