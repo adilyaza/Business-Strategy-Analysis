@@ -1,0 +1,18 @@
+-- What genres are rented by top 10 customers  
+
+SELECT  c.customer_id,
+                c.first_name||' '||c.last_name as customer,
+                cat.name,
+                COUNT(r.rental_id) as times_rented
+FROM category cat
+	 JOIN film_category fc ON cat.category_id=fc.category_id
+ 	 JOIN inventory i ON fc.film_id=i.film_id
+	 RIGHT JOIN rental r ON i.inventory_id=r.inventory_id
+	 JOIN customer c ON r.customer_id=c.customer_id
+WHERE r.customer_id IN (SELECT customer_id
+	                  FROM payment  
+                          GROUP by customer_id
+                          ORDER by SUM(amount) DESC
+	                  LIMIT 10)
+GROUP by cat.name, c.customer_id, customer
+ORDER by customer, times_rented DESC;
