@@ -1,4 +1,4 @@
-/*Create a list of countries, genres for each country and ratings for each genre with total movies rented, total revenue */  
+/*Create a list of countries, genres for each country, and ratings for each genre with total movies rented, total revenue */  
 
 SELECT c.country,
               cat.name,
