@@ -1,4 +1,4 @@
-# SQLBusinessStrategyAnalysis
+# SQL: Business-Strategy-Analysis
 Using SQL for in-depth analysis of a company's growth prospects and performance.  
 
 Project objectives
@@ -31,4 +31,3 @@ Q5: Total number of rentals and revenue of each genre and rating by country.
 [Dataset](http://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip)  
 Contact: Adilya Zaripova frauzaripova@gmail.com  
 This project was created for an SQL training challenge.
-![image](https://github.com/adilyaza/SQLBusinessStrategyAnalysis/assets/134287081/604d25b0-f23a-467e-9d55-b905fb561418)
